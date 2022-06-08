@@ -10,8 +10,8 @@ jobs:
         uses: xu-cheng/latex-action@v2
         with:
           root_file: smith.tex
-      - name: Upload LaTeX document
-        uses: actions/upload-artifact@v2
+      - name: Deploy LaTeX document
+        uses: JamesIves/github-pages-deploy-action@v4
         with:
-          name: PDF
-          path: smith.pdf
+          branch: gh-pages # The branch the action should deploy to.
+          folder: . # The folder the action should deploy.
