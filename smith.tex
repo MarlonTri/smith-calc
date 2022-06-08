@@ -1,0 +1,432 @@
+%%% template.tex
+%%% This is a template for making up an AMS-LaTeX file
+%%% Version of February 12, 2011
+%%%---------------------------------------------------------
+%%% The following command chooses the default 10 point type.
+%%% To choose 12 point, change it to
+%%% \documentclass[12pt]{amsart}
+\documentclass{amsart}
+
+%%% The following command loads the amsrefs package, which will be
+%%% used to create the bibliography:
+\usepackage[lite]{amsrefs}
+
+%%% The following command defines the standard names for all of the
+%%% special symbols in the AMSfonts package, listed in
+%%% http://www.ctan.org/tex-archive/info/symbols/math/symbols.pdf
+\usepackage{amssymb}
+
+%%% The following commands allow you to use \Xy-pic to draw
+%%% commutative diagrams.  (You can omit the second line if you want
+%%% the default style of the nodes to be \textstyle.)
+\usepackage[all,cmtip]{xy}
+\let\objectstyle=\displaystyle
+
+%%% If you'll be importing any graphics, uncomment the following
+%%% line.  (Note: The spelling is correct; the package graphicx.sty is
+%%% the updated version of the older graphics.sty.)
+% \usepackage{graphicx}
+
+
+
+%%% This part of the file (after the \documentclass command,
+%%% but before the \begin{document}) is called the ``preamble''.
+%%% This is where we put our macro definitions.
+
+%%% Comment out (or delete) any of these that you don't want to use.
+\newcommand{\tensor}{\otimes}
+\newcommand{\homotopic}{\simeq}
+\newcommand{\homeq}{\cong}
+\newcommand{\iso}{\approx}
+
+\DeclareMathOperator{\ho}{Ho}
+\DeclareMathOperator*{\colim}{colim}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\RE}{{49081}}
+\newcommand{\ME}{{665829}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Z}{\mathbb{Z}}
+
+\newcommand{\M}{\mathcal{M}}
+\newcommand{\W}{\mathcal{W}}
+
+\newcommand{\itilde}{\tilde{\imath}}
+\newcommand{\jtilde}{\tilde{\jmath}}
+\newcommand{\ihat}{\hat{\imath}}
+\newcommand{\jhat}{\hat{\jmath}}
+
+\usepackage{mathtools}
+\DeclarePairedDelimiter\ceil{\lceil}{\rceil}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+
+
+%%%-------------------------------------------------------------------
+%%%-------------------------------------------------------------------
+%%% The Theorem environments:
+%%%
+%%%
+%%% The following commands set it up so that:
+%%% 
+%%% All Theorems, Corollaries, Lemmas, Propositions, Definitions,
+%%% Remarks, Examples, Notations, and Terminologies  will be numbered
+%%% in a single sequence, and the numbering will be within each
+%%% section.  Displayed equations will be numbered in the same
+%%% sequence. 
+%%% 
+%%% 
+%%% Theorems, Propositions, Lemmas, and Corollaries will have the most
+%%% formal typesetting.
+%%% 
+%%% Definitions will have the next level of formality.
+%%% 
+%%% Remarks, Examples, Notations, and Terminologies will be the least
+%%% formal.
+%%% 
+%%% Theorem:
+%%% \begin{thm}
+%%% 
+%%% \end{thm}
+%%% 
+%%% Corollary:
+%%% \begin{cor}
+%%% 
+%%% \end{cor}
+%%% 
+%%% Lemma:
+%%% \begin{lem}
+%%% 
+%%% \end{lem}
+%%% 
+%%% Proposition:
+%%% \begin{prop}
+%%% 
+%%% \end{prop}
+%%% 
+%%% Definition:
+%%% \begin{defn}
+%%% 
+%%% \end{defn}
+%%% 
+%%% Remark:
+%%% \begin{rem}
+%%% 
+%%% \end{rem}
+%%% 
+%%% Example:
+%%% \begin{ex}
+%%% 
+%%% \end{ex}
+%%% 
+%%% Notation:
+%%% \begin{notation}
+%%% 
+%%% \end{notation}
+%%% 
+%%% Terminology:
+%%% \begin{terminology}
+%%% 
+%%% \end{terminology}
+%%% 
+%%%       Theorem environments
+
+% The following causes equations to be numbered within sections
+\numberwithin{equation}{section}
+
+% We'll use the equation counter for all our theorem environments, so
+% that everything will be numbered in the same sequence.
+
+%       Theorem environments
+
+\theoremstyle{plain} %% This is the default, anyway
+\newtheorem{thm}[equation]{Theorem}
+\newtheorem{cor}[equation]{Corollary}
+\newtheorem{lem}[equation]{Lemma}
+\newtheorem{prop}[equation]{Proposition}
+
+
+\theoremstyle{definition}
+\newtheorem{defn}[equation]{Definition}
+\newtheorem{fact}{Fact}
+
+
+\theoremstyle{remark}
+\newtheorem{rem}[equation]{Remark}
+\newtheorem{ex}[equation]{Example}
+\newtheorem{notation}[equation]{Notation}
+\newtheorem{terminology}[equation]{Terminology}
+
+
+%%%-------------------------------------------------------------------
+%%%-------------------------------------------------------------------
+%%%-------------------------------------------------------------------
+%%%-------------------------------------------------------------------
+%%%-------------------------------------------------------------------
+%%%-------------------------------------------------------------------
+%%%-------------------------------------------------------------------
+\begin{document}
+
+%%% In the title, use a double backslash "\\" to show a linebreak:
+%%% Use one of the following two forms:
+%%% \title{Text of the title}
+%%% or
+%%% \title[Short form for the running head]{Text of the title}
+\title{Largest Smith Number}
+
+
+%%% If there are multiple authors, they're described one at a time:
+%%% First author: \author{} \address{} \curraddr{} \email{} \thanks{}
+%%% Second author: \author{} \address{} \curraddr{} \email{} \thanks{}
+%%% Third author: \author{} \address{} \curraddr{} \email{} \thanks{}
+\author{Marlon Trifunovic}
+
+%%% In the address, show linebreaks with double backslashes:
+\address{}
+
+%%% Current address is optional.
+% \curraddr{}
+
+%%% Email address is optional.
+% \email{}
+
+
+%%% If there's a second author:
+% \author{}
+% \address{}
+% \curraddr{}
+% \email{}
+
+
+%%% To have the current date inserted, use \date{\today}:
+\date{\today}
+
+%%% To include an abstract, uncomment the following two lines and type
+%%% the abstract in between them:
+ \begin{abstract}
+We find large Smith numbers by explicitly calculating digit sums through several methods relying on computer programs. This paper explicitly constructs a Smith number with 130,123,390,485 digits, exceeding previous record of 32,066,910 digits.
+ \end{abstract}
+
+
+\maketitle
+
+%%% To include a table of contents, uncomment the following line:
+ \tableofcontents
+
+
+%-------------------------------------------------------------------
+%-------------------------------------------------------------------
+ %Start the body of the paper here!  E.G., maybe use:
+ \section{Introduction}
+
+A Smith number is defined by A. Wilanksy as ``a composite number the sum of whose digits is the sum of all digits of all its prime factors''\cite{Wilansky1982}.
+
+
+
+ \section{Notation and Basic Facts}
+The following notation and basic facts are taken from Patrick Costello \cite{Costello2002}. For any positive integer $n$, let $S(n)$ denote the sum of the digits of $n$. For any positive integer $n$, let $S_p(n)$ denote the sum of digits of the prime factorization of $n$. For example, $S(12) = 1 + 2 = 3$ and $S_p(12) = S_p(2\cdot 2 \cdot 3) = 2 + 2 + 3 = 7$.
+
+
+ \section{An update on Costello 2002}
+ Patrick Costello was able to construct a $32,066,910$ digit Smith number by using the known prime repunit $R_{1031}$ and Chris Caldwell's large palindromic prime $M = 10^{28572} + 8 \cdot 10^{14286} + 1$. I will briefly go through the similar steps as Costello with more recently verified primes to construct a new largest Smith number.
+
+ Firstly, two facts are necessary
+
+\begin{fact}[{Lewis \cite{?}}]
+If you multiply $9R_n$ by any natural number less than $9R_n$, then the digit sum is $9n$, i.e.,
+$S(M \cdot 9R_n) = 9M = S(9R_n)$  when $M < 9R_n$.
+\end{fact}
+
+\begin{fact}[{Wayland, Oltikar \cite{?}}]
+If $S(u) > S_p(u)$ and $S(u) = S_p(u) \pmod{7}$, then $10^k \cdot u$ is a Smith number, where $k =\frac{S(u)-S_p(u)}{7}$.
+\end{fact}
+
+Chris Caldwell's list of large proven primes\cite{} lists the prime $M=  3 \cdot 10^{665829} + 1$. It additionally lists the large prime repunit $R_\RE$ discovered and proven by Paul Underwood\cite{?}. Notice that $M$ is not palindromic and requires different method for bounding coefficients than Costello's 2002 paper.
+
+
+ For a power $t$, the term $M^t$ can be represented as a sum of coefficients multiplied by powers of $10^\ME$.
+$$M^t = \sum_{k = 0}^t c_k  10^{\ME k}, \quad c_k = \binom{t}{k} 3^k $$
+\begin{thm} Let $k_0 =  \ceil{\frac{3t-1}{4}}$, then $c_{k_0} \geq c_k$ for $0 \leq k \leq t$.
+\end{thm}
+\begin{proof}
+Define the ratio of coefficients $r_k = \frac{c_{k+1}}{c_k}$, then 
+\begin{align*}
+b_k &=  \frac{c_{k+1}}{c_k}\\
+&= \frac{ \binom{t}{k+1} 3^{k+1}}{ \binom{t}{k} 3^k}\\
+&=  \frac{3  \frac{1}{(k+1)! (t - (k+1))!}}{\frac{1}{k! (t - k)!}}\\
+&= \frac{ 3(t-k)}{k + 1}
+\end{align*}
+
+Notice that $b_k$ is a decreasing function with $b_0 > 1$ and $b_{t-1} < 1$. Let $k_0 = \ceil{\frac{3t-1}{4}}$, then $k_0$ is the minimal integer so that $b_{k_0} < 1$. Therefor, $c_{k_0}$ is the coefficient with largest value.
+\end{proof}
+\begin{thm}Suppose $N = 9 R_{49081} M^t$ for a power $t \leq 81525$, then for all $0 \leq k \leq t$,  $c_k < 9R_{\RE}$ and $9 R_{\RE} c_k < 10^\ME$.
+\end{thm}
+\begin{proof}
+Let $t_0 =81525$, then by explicity calculation, $c^{t_0}_{k} < 9 R_\RE$ while $c^{t_0 + 1}_{k_0} \geq  9 R_\RE$.
+\begin{align*}
+c_k & \leq c_{k_0} \\
+& \leq \binom{t}{k_0} 3^{k_0}\\
+& \leq \binom{t}{\ceil{\frac{3t-1}{4}}} 3^{\ceil{\frac{3t-1}{4}}}\\
+\end{align*}
+Define that last line as $f(t)$, an increasing function. By explicit calculation,$$f(81525) < 9R_\RE < f(81526) $$
+\end{proof}
+
+Now suppose $N = 9 R_{49081} M^t$ for a power $t\leq 81525$. We know each coeffient $c_k < 9R_{\RE}$ and $9 R_{\RE} c_k < 10^\ME$. The latter constraint means the digit sum of $N$ is the sum of the digit sums of $9 R_{49081} c_k$. The first constraint allows us to apply fact 1 to prove the digit sum of $ 9 R_{49081} c_k$ is $9 \cdot 49081$. Since $k$ varies from $0 \leq k \leq t$, then
+$$S(N) = (t+1) \cdot 9 \cdot 49081$$
+The prime factorization of $N$ is simply $3\cdot 3 \cdot R_\RE \cdot M^t$. Keeping in mind $S(M) = 4$, then
+$$S_p(N) = 3 + 3 + \RE + 4t$$
+Note that $S(N) > S_p(N)$ and 
+\begin{align*}
+S(N) - S_p(N) &= (t+1) \cdot 9 \cdot \RE - (3 + 3 + \RE + 4t) \\
+&= 441725 t + 392642 \\
+&= 4t +5 \pmod{7}\\
+&= 4(t +3) \pmod{7}
+\end{align*}
+Fix $t=81519$, then $t \equiv 4 \pmod{7}$ and $t \leq 81525$. By above, $S(N) - S_p(N) \equiv 0 \pmod{7}$. Calculate $k$
+$$k = \frac{ S(N) - S_p(N)}{7} = \frac{441725 t + 392642}{7} = 5144196131$$
+then Fact 2 to proves $10^k N$ is a Smith number. This Smith number has 130,123,390,485 digits.
+%\begin{align*}
+%\log_{10} 10^k N &= 5144196131 +\log_{10} 9 R_\RE M^t \\ 
+% &= 5144196131 +\log_{10} 9 R_\RE  + t \log_{10} M \\ 
+% &= 5144196131 +  49080.99999999999  + t \cdot 1533129.028495421 \\ 
+%&= 130123390485.91821
+%\end{align*} 
+\\ 
+ \section{Best by adding coefficients}
+\,\\ \section{Best by overlapping coefficients}
+% \label{sec:intro}
+
+% For a numbered display, use
+ %\begin{equation}
+  % \label{something}
+   %The display goes here
+% \end{equation}
+% and you can refer to it as% \eqref{something}.
+
+ %For an unnumbered display, use
+ %\begin{equation*}
+ 
+ %\end{equation*}
+
+ %To import a graphics file, you must have said
+ %\usepackage{graphicx}
+% in the preamble (i.e., before the \begin{document}).
+% Putting it into a figure environment enables it to float to the
+% next page if there isn't enough room for it on the current page.
+% The \label command must come after the \caption command.
+ %\begin{figure}[h]%
+   %\includegraphics{filename}
+ %  \caption{Some caption}
+  % \label{somelabel}
+% \end{figure}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+%%% -------------------------------------------------------------------
+%%% -------------------------------------------------------------------
+%%% This is where we create the bibliography.
+
+\,\\
+\begin{bibdiv}
+  \begin{biblist}
+
+%%% The format of bibliography items is as in the following examples:
+%%% 
+%%% \bib{yellowmonster}{book}{
+%%%   author={Bousfield, A.K.},
+%%%   author={Kan, D.M.},
+%%%   title={Homotopy Limits, Completions and Localizations},
+%%%   date={1972},
+%%%   series={Lecture Notes in Mathematics},
+%%%   volume={304},
+%%%   publisher={Springer-Verlag},
+%%%   address={Berlin-New York}
+%%% }
+
+%%% \bib{HA}{book}{
+%%%   author={Quillen, Daniel G.},
+%%%   title={Homotopical Algebra},
+%%%   series={Lecture Notes in Mathematics},
+%%%   volume={43},
+%%%   publisher={Springer-Verlag},
+%%%   address={Berlin-New York},
+%%%   date={1967}
+%%% }
+
+\bib{Witno2010}{article}{
+author = {Amin Witno},
+title = {Another Simple Construction of Smith Numbers},
+volume = {22},
+journal = {Missouri Journal of Mathematical Sciences},
+number = {2},
+publisher = {University of Central Missouri, Department of Mathematics and Computer Science},
+pages = {97 -- 101},
+year = {2010},
+doi = {10.35834/mjms/1312233139},
+URL = {https://doi.org/10.35834/mjms/1312233139}
+}
+ 
+\bib{Costello2015}{article}{
+author = {Patrick Costello},
+title = {{Smith Numbers From Primes with Small Digits}},
+volume = {27},
+journal = {Missouri Journal of Mathematical Sciences},
+number = {1},
+publisher = {University of Central Missouri, Department of Mathematics and Computer Science},
+pages = {10 -- 15},
+keywords = {primes with small digits, Smith numbers},
+year = {2015},
+doi = {10.35834/mjms/1449161363},
+URL = {https://doi.org/10.35834/mjms/1449161363}
+}
+\bib{Costello2002}{article}{
+author = {Costello, Patrick},
+year = {2002},
+month = {08},
+pages = {},
+title = {A new largest Smith number},
+volume = {40},
+journal = {The Fibonacci Quarterly}
+}
+\bib{Lewis1994}{thesis}{
+  title={Smith numbers: an infinite subset of N},
+  author={Lewis, Kathy Sharon},
+  year={1994},
+  school={Eastern Kentucky University}
+}
+\bib{Wilansky1982}{article}{
+author = {A. Wilansky},
+title = {Smith Numbers},
+journal = {The Two-Year College Mathematics Journal},
+volume = {13},
+number = {1},
+pages = {21-21},
+year  = {1982},
+publisher = {Taylor & Francis},
+doi = {10.1080/00494925.1982.11972573},
+
+%URL = {   https://www.tandfonline.com/doi/abs/10.1080/00494925.1982.11972573 },
+%eprint = {   https://www.tandfonline.com/doi/pdf/10.1080/00494925.1982.11972573 }
+
+}
+
+
+
+
+
+
+  \end{biblist}
+\end{bibdiv}
+
+\end{document}
