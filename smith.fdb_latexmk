@@ -1,5 +1,5 @@
 # Fdb version 3
-["pdflatex"] 1654676568 "smith.tex" "smith.pdf" "smith" 1654676569
+["pdflatex"] 1654761704 "smith.tex" "smith.pdf" "smith" 1654761704
   "/opt/texlive/texdir/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/opt/texlive/texdir/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1246382020 1004 54797486969f23fa377b128694d548df ""
   "/opt/texlive/texdir/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex8.tfm" 1246382020 988 bdf658c3bfc2d96d3c8b02cfc1c94c20 ""
@@ -103,9 +103,9 @@
   "/opt/texlive/texdir/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1651368158 4410328 ad4c8b228945fed75b2c936885ec50a0 ""
   "/opt/texlive/texdir/texmf-var/web2c/pdftex/pdflatex.fmt" 1651368200 2827903 9920992e07aadf2e0164d17d13dbd2fc ""
   "/opt/texlive/texdir/texmf.cnf" 1651368150 555 bd60ff59e4d560b42d96b004436f91d3 ""
-  "smith.aux" 1654676568 1219 7fa0267460a39887daea5c79f66f3109 "pdflatex"
-  "smith.tex" 1654676567 13841 07eca182a1ada16aedc6534f52d33952 ""
-  "smith.toc" 1654676568 436 2c72504c1e7f7452be40ecff3b6286eb "pdflatex"
+  "smith.aux" 1654761704 1219 7fa0267460a39887daea5c79f66f3109 "pdflatex"
+  "smith.tex" 1654761702 13850 d2b6ca0bff9f984c469853fa730ec546 ""
+  "smith.toc" 1654761704 436 2c72504c1e7f7452be40ecff3b6286eb "pdflatex"
   (generated)
   "smith.aux"
   "smith.log"

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2022.5.1)  8 JUN 2022 08:22
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2022.5.1)  9 JUN 2022 08:01
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -382,9 +382,9 @@ LaTeX Warning: Citation `?' on page 1 undefined on input line 234.
 LaTeX Warning: Citation `' on page 1 undefined on input line 243.
 
 [1{/opt/texlive/texdir/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [2]
-Overfull \hbox (12.17546pt too wide) in paragraph at lines 285--294
+Overfull \hbox (7.17545pt too wide) in paragraph at lines 285--294
 \OT1/cmr/m/n/10 then Fact 2 to proves $10[]\OML/cmm/m/it/10 N$ \OT1/cmr/m/n/10 
-is a Smith num-ber. This Smith num-ber has 130,123,390,485
+is a Smith num-ber. This Smith num-ber has 59,421,998,357
  []
 
 
@@ -393,20 +393,20 @@ Underfull \hbox (badness 10000) in paragraph at lines 285--294
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 295--295
+Underfull \hbox (badness 10000) in paragraph at lines 295--296
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 340--342
+Underfull \hbox (badness 10000) in paragraph at lines 341--343
 
  []
 
 
-Package rkeyval Warning: Unknown key: \bib'keywords on input line 388.
+Package rkeyval Warning: Unknown key: \bib'keywords on input line 389.
 
 
-Package rkeyval Warning: Unknown key: \bib'month on input line 396.
+Package rkeyval Warning: Unknown key: \bib'month on input line 397.
 
 [3] (./smith.aux)
 
@@ -438,7 +438,7 @@ onts/cm/cmr8.pfb></opt/texlive/texdir/texmf-dist/fonts/type1/public/amsfonts/cm
 /texlive/texdir/texmf-dist/fonts/type1/public/amsfonts/cm/cmti8.pfb></opt/texli
 ve/texdir/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></opt/texlive/te
 xdir/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb>
-Output written on smith.pdf (3 pages, 219165 bytes).
+Output written on smith.pdf (3 pages, 219444 bytes).
 PDF statistics:
  104 PDF objects out of 1000 (max. 8388607)
  62 compressed objects within 1 object stream
