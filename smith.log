@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2022.7.1)  2 JUL 2022 03:22
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2022.7.1)  2 JUL 2022 07:22
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -396,21 +396,21 @@ Underfull \hbox (badness 10000) in paragraph at lines 291--300
 
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 322--322
-
- []
-
 [3]
-Underfull \hbox (badness 10000) in paragraph at lines 367--369
+Underfull \hbox (badness 10000) in paragraph at lines 324--326
 
  []
 
 
-Package rkeyval Warning: Unknown key: \bib'keywords on input line 415.
+Underfull \hbox (badness 10000) in paragraph at lines 371--373
+
+ []
 
 
-Package rkeyval Warning: Unknown key: \bib'month on input line 423.
+Package rkeyval Warning: Unknown key: \bib'keywords on input line 419.
+
+
+Package rkeyval Warning: Unknown key: \bib'month on input line 427.
 
 [4] (./smith.aux)
 
@@ -441,7 +441,7 @@ onts/cm/cmr8.pfb></opt/texlive/texdir/texmf-dist/fonts/type1/public/amsfonts/cm
 ></opt/texlive/texdir/texmf-dist/fonts/type1/public/amsfonts/cm/cmti8.pfb></opt
 /texlive/texdir/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></opt/texl
 ive/texdir/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb>
-Output written on smith.pdf (4 pages, 213732 bytes).
+Output written on smith.pdf (4 pages, 214480 bytes).
 PDF statistics:
  102 PDF objects out of 1000 (max. 8388607)
  61 compressed objects within 1 object stream
