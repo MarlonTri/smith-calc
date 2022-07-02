@@ -22,6 +22,7 @@
 \usepackage[all,cmtip]{xy}
 \let\objectstyle=\displaystyle
 
+\usepackage{siunitx}
 %%% If you'll be importing any graphics, uncomment the following
 %%% line.  (Note: The spelling is correct; the package graphicx.sty is
 %%% the updated version of the older graphics.sty.)
@@ -203,7 +204,7 @@
 %%% To include an abstract, uncomment the following two lines and type
 %%% the abstract in between them:
  \begin{abstract}
-We find large Smith numbers by explicitly calculating digit sums through several methods relying on computer programs. This paper explicitly constructs a Smith number with 59,421,998,357 digits, exceeding previous record of 32,066,910 digits.
+We find large Smith numbers by explicitly calculating digit sums through several methods relying on computer programs. This paper explicitly constructs a Smith number with \num{59421998357} digits, exceeding previous record of \num{32066910} digits.
  \end{abstract}
 
 
@@ -289,7 +290,7 @@ then Fact 2 to proves $10^k N$ is a Smith number. The explicit description for t
 10^k N &= (3\cdot 10^\ME + 1)^t \cdot 9R_\RE \cdot 10^k \\
 &=  (3\cdot 10^\ME + 1)^{81519} \cdot (10 ^{49081} -1 ) \cdot 10^{ 5144196131}
 \end{align*}
-This Smith number has 59,421,998,358 digits.
+This Smith number has \num{59421998358} digits.
 %\begin{align*}
 %\log_{10} 10^k N &= 5144196131 +\log_{10} 9 R_\RE M^t \\ 
 % &= 5144196131 +\log_{10} 9 R_\RE  + t \log_{10} M \\ 
@@ -322,7 +323,7 @@ S(M^{t_0}) -  S_p(M^{t_0}) &= 2508094319920
 
 Let $k = \frac{S(M^{t_0}) -  S_p(M^{t_0}) }{7} = 358299188560$, then finally let $N = M^{t_0} 10^k$. $N$ is a Smith number with explicit form
 $$N = (3\cdot 10^\ME + 1)^{1105923} \cdot 10^{358299188560}$$
-This Smith number $N$ has $1,094,654,215,464$ digits.
+This Smith number $N$ has $\num{1094654215464}$ digits.
 \,\\ \section{Best by overlapping coefficients}
 % \label{sec:intro}
 
