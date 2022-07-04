@@ -322,14 +322,16 @@ void section3() {
 
 	long long c1 = 3;
 	long long c2 = 665829;
+	long long t0 = 1105923;
 	std::string path = "./3-665829-1105923.csv";
 
 	bool RECALCULATE = false;
 
 	std::vector<long long> coefs;
+	std::cout << "Let t0 = " << t0 << "\n";
 	std::cout << std::boolalpha << "Recalculating Coefficients? = " << RECALCULATE << "\n";
 	if (RECALCULATE) {
-		coefs = bi_digit_lst_MT(c1, c2, 1105923);
+		coefs = bi_digit_lst_MT(c1, c2, t0);
 		save_coefs_to_csv(coefs, path);
 	}
 	else {
@@ -342,9 +344,9 @@ void section3() {
 		sum += coef;
 	}
 	std::cout << "S(M^{t0}) = " << sum << "\n";
-	std::cout << "Sp(M^{t0}) = " << 4*1105923 << "\n";
-	std::cout << "S(M^{t0}) - Sp(M^{t0}) = " << (sum - 4 * 1105923) % 7 << " mod 7\n";
-	std::cout << "(S(M^{t0}) - Sp(M^{t0}))/7 = " << (sum - 4 * 1105923) / 7 << "\n\n";
+	std::cout << "Sp(M^{t0}) = " << 4* t0 << "\n";
+	std::cout << "S(M^{t0}) - Sp(M^{t0}) = " << (sum - 4 * t0) % 7 << " mod 7\n";
+	std::cout << "(S(M^{t0}) - Sp(M^{t0}))/7 = " << (sum - 4 * t0) / 7 << "\n\n";
 }
 
 int main() {
