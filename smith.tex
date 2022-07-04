@@ -232,16 +232,16 @@ The following notation and basic facts are taken from Patrick Costello \cite{Cos
 
  Firstly, two facts are necessary
 
-\begin{fact}[{Lewis \cite{?}}]
+\begin{fact}[{Lewis \cite{Lewis1994}}]
 If you multiply $9R_n$ by any natural number less than $9R_n$, then the digit sum is $9n$, i.e.,
 $S(M \cdot 9R_n) = 9M = S(9R_n)$  when $M < 9R_n$.
 \end{fact}
 
-\begin{fact}[{Wayland, Oltikar \cite{?}}]
+\begin{fact}[{Wayland, Oltikar \cite{OltikarWayland1983}}]
 If $S(u) > S_p(u)$ and $S(u) = S_p(u) \pmod{7}$, then $10^k \cdot u$ is a Smith number, where $k =\frac{S(u)-S_p(u)}{7}$.
 \end{fact}
 
-Chris Caldwell's list of large proven primes\cite{} lists the prime $M=  3 \cdot 10^{665829} + 1$. It additionally lists the large prime repunit $R_\RE$ discovered and proven by Paul Underwood\cite{?}. Notice that $M$ is not palindromic and requires different method for bounding coefficients than Costello's 2002 paper.
+Chris Caldwell's list of large proven primes\cite{Caldwell3} lists the prime $M=  3 \cdot 10^{665829} + 1$. It additionally lists the large prime repunit $R_\RE$ discovered and proven by Paul Underwood\cite{CaldwellR}. Notice that $M$ is not palindromic and requires different method for bounding coefficients than Costello's 2002 paper.
 
 
  For a power $t$, the term $M^t$ can be represented as a sum of coefficients multiplied by powers of $10^\ME$.
@@ -324,7 +324,7 @@ S(M^{t_0}) -  S_p(M^{t_0}) &= 2508094319920
 Let $k = \frac{S(M^{t_0}) -  S_p(M^{t_0}) }{7} = 358299188560$, then finally let $N = M^{t_0} 10^k$. $N$ is a Smith number with explicit form
 $$N = (3\cdot 10^\ME + 1)^{1105923} \cdot 10^{358299188560}$$
 This Smith number has $\num{1094654215464}$ digits.
-\,\\ \section{Best by overlapping coefficients}
+\,\\ \section{Implementation \& Afterword}
 % \label{sec:intro}
 
 % For a numbered display, use
@@ -431,12 +431,14 @@ title = {A new largest Smith number},
 volume = {40},
 journal = {The Fibonacci Quarterly}
 }
+
 \bib{Lewis1994}{thesis}{
   title={Smith numbers: an infinite subset of N},
   author={Lewis, Kathy Sharon},
   year={1994},
   school={Eastern Kentucky University}
 }
+
 \bib{Wilansky1982}{article}{
 author = {A. Wilansky},
 title = {Smith Numbers},
@@ -447,13 +449,41 @@ pages = {21-21},
 year  = {1982},
 publisher = {Taylor & Francis},
 doi = {10.1080/00494925.1982.11972573},
-
 %URL = {   https://www.tandfonline.com/doi/abs/10.1080/00494925.1982.11972573 },
 %eprint = {   https://www.tandfonline.com/doi/pdf/10.1080/00494925.1982.11972573 }
+}
 
+\bib{OltikarWayland1983}{article}{
+author = {Sham Oltikar and Keith Wayland},
+title = {Construction of Smith Numbers},
+journal = {Mathematics Magazine},
+volume = {56},
+number = {1},
+pages = {36-37},
+year  = {1983},
+publisher = {Taylor & Francis},
+doi = {10.1080/0025570X.1983.11977013},
+%URL = {   https://doi.org/10.1080/0025570X.1983.11977013 },
+%eprint = {  https://doi.org/10.1080/0025570X.1983.11977013 }
 }
 
 
+\bib{Caldwell3}{webpage}{
+ title={PrimePage Primes: 3 · 10\^{}665829 + 1},
+  url={https://primes.utm.edu/primes/page.php?id=109247},
+  %howpublished = "\url{http://aiweb.techfak.uni-bielefeld.de/content/bworld-robot-control-software/}",
+  journal={PrimePage Primes},
+ author={Caldwell, Chris K},
+ year={2012} 
+}
+\bib{CaldwellR}{webpage}{
+ title={PrimePage Primes: R(49081)},
+  url={https://primes.utm.edu/primes/page.php?id=133761},
+  %howpublished = "\url{http://aiweb.techfak.uni-bielefeld.de/content/bworld-robot-control-software/}",
+  journal={PrimePage Primes},
+ author={Chris\,K\,Caldwell and Paul Underwood},
+ year={2021} 
+}
 
 
 

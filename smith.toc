@@ -2,5 +2,5 @@
 \contentsline {section}{\tocsection {}{2}{Notation and Basic Facts}}{1}{}%
 \contentsline {section}{\tocsection {}{3}{An update on Costello 2002}}{1}{}%
 \contentsline {section}{\tocsection {}{4}{Best by adding coefficients}}{3}{}%
-\contentsline {section}{\tocsection {}{5}{Best by overlapping coefficients}}{4}{}%
+\contentsline {section}{\tocsection {}{5}{Implementation \& Afterword}}{4}{}%
 \contentsline {section}{\tocsection {}{}{References}}{4}{}%

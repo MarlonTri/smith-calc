@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2022.7.1)  4 JUL 2022 05:09
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2022.7.1)  4 JUL 2022 06:42
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -453,14 +453,7 @@ Package graphics Info: Driver file: pdftex.def on input line 107.
 \tf@toc=\write4
 \openout4 = `smith.toc'.
 
-
-
-LaTeX Warning: Citation `?' on page 1 undefined on input line 235.
-
-
-LaTeX Warning: Citation `' on page 1 undefined on input line 244.
-
-[1{/opt/texlive/texdir/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [2]
+ [1{/opt/texlive/texdir/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [2]
 Underfull \hbox (badness 10000) in paragraph at lines 292--301
 
  []
@@ -481,39 +474,37 @@ Package rkeyval Warning: Unknown key: \bib'keywords on input line 420.
 
 Package rkeyval Warning: Unknown key: \bib'month on input line 428.
 
-[4] (./smith.aux)
-
-LaTeX Warning: There were undefined references.
-
- ) 
+[4] (./smith.aux) ) 
 Here is how much of TeX's memory you used:
- 11509 strings out of 478037
- 220527 string characters out of 5841058
- 549094 words of memory out of 5000000
- 29648 multiletter control sequences out of 15000+600000
- 478211 words of font info for 66 fonts, out of 8000000 for 9000
+ 11515 strings out of 478037
+ 220630 string characters out of 5841058
+ 549130 words of memory out of 5000000
+ 29652 multiletter control sequences out of 15000+600000
+ 478899 words of font info for 68 fonts, out of 8000000 for 9000
  1302 hyphenation exceptions out of 8191
  71i,10n,77p,3246b,649s stack positions out of 10000i,1000n,20000p,200000b,200000s
-</opt/texlive/texdir/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></o
-pt/texlive/texdir/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb></opt/tex
-live/texdir/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></opt/texlive
-/texdir/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></opt/texlive/texd
-ir/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></opt/texlive/texdir/te
-xmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></opt/texlive/texdir/texmf-di
-st/fonts/type1/public/amsfonts/cm/cmmi7.pfb></opt/texlive/texdir/texmf-dist/fon
-ts/type1/public/amsfonts/cm/cmr10.pfb></opt/texlive/texdir/texmf-dist/fonts/typ
-e1/public/amsfonts/cm/cmr5.pfb></opt/texlive/texdir/texmf-dist/fonts/type1/publ
-ic/amsfonts/cm/cmr7.pfb></opt/texlive/texdir/texmf-dist/fonts/type1/public/amsf
-onts/cm/cmr8.pfb></opt/texlive/texdir/texmf-dist/fonts/type1/public/amsfonts/cm
-/cmsy10.pfb></opt/texlive/texdir/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy
-7.pfb></opt/texlive/texdir/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb
-></opt/texlive/texdir/texmf-dist/fonts/type1/public/amsfonts/cm/cmti8.pfb></opt
-/texlive/texdir/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></opt/texl
-ive/texdir/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb>
-Output written on smith.pdf (4 pages, 215418 bytes).
+{/opt/texlive/texdir/texmf-dist/fonts/enc/dvips/cm-super/cm-
+super-ts1.enc}</opt/texlive/texdir/texmf-dist/fonts/type1/public/amsfonts/cm/cm
+bx10.pfb></opt/texlive/texdir/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.p
+fb></opt/texlive/texdir/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb><
+/opt/texlive/texdir/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></opt/
+texlive/texdir/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></opt/texli
+ve/texdir/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></opt/texlive/tex
+dir/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></opt/texlive/texdir/te
+xmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></opt/texlive/texdir/texmf-di
+st/fonts/type1/public/amsfonts/cm/cmr5.pfb></opt/texlive/texdir/texmf-dist/font
+s/type1/public/amsfonts/cm/cmr7.pfb></opt/texlive/texdir/texmf-dist/fonts/type1
+/public/amsfonts/cm/cmr8.pfb></opt/texlive/texdir/texmf-dist/fonts/type1/public
+/amsfonts/cm/cmsy10.pfb></opt/texlive/texdir/texmf-dist/fonts/type1/public/amsf
+onts/cm/cmsy7.pfb></opt/texlive/texdir/texmf-dist/fonts/type1/public/amsfonts/c
+m/cmti10.pfb></opt/texlive/texdir/texmf-dist/fonts/type1/public/amsfonts/cm/cmt
+i8.pfb></opt/texlive/texdir/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt8.pfb
+></opt/texlive/texdir/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb
+></opt/texlive/texdir/texmf-dist/fonts/type1/public/cm-super/sfti0800.pfb>
+Output written on smith.pdf (4 pages, 232854 bytes).
 PDF statistics:
- 102 PDF objects out of 1000 (max. 8388607)
- 61 compressed objects within 1 object stream
+ 108 PDF objects out of 1000 (max. 8388607)
+ 65 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 
