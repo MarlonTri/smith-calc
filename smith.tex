@@ -325,6 +325,12 @@ Let $k = \frac{S(M^{t_0}) -  S_p(M^{t_0}) }{7} = 358299188560$, then finally let
 $$N = (3\cdot 10^\ME + 1)^{1105923} \cdot 10^{358299188560}$$
 This Smith number has $\num{1094654215464}$ digits.
 \,\\ \section{Implementation \& Afterword}
+The large-integer calculations throughout the paper were done using the Multiple Precision Integers and Rationals Library (MPIR). The outputs of these calculations can be reproduced using associated code at
+ \url{https://github.com/MarlonTri/smith-calc}.
+
+For future work, an even larger $t$ power can be achieved. Section 4 relied on each keeping coefficients small enough that they could be separated in the digit sum. However, it wouldn't be too much more computationally expensive to allow coefficients to get larger than $10^\ME$ and then calculating the digits of coefficients after adding enough adjacent coefficients together. 
+
+
 % \label{sec:intro}
 
 % For a numbered display, use

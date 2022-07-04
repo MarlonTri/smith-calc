@@ -71,8 +71,6 @@ long long bi_digit_sum_GT(long a, long b, long c) {
 	return out;
 }
 
-
-
 long long bi_digit_sum_COEF(long a, long b, long c) {
 	long long sum = 0;
 
@@ -241,7 +239,6 @@ void save_coefs_to_csv(std::vector<T> vec, std::string path) {
 	}
 }
 
-
 std::vector<long long> load_coefs_from_csv(std::string path) {
 	std::vector<long long> vec;
 	std::ifstream file(path);
@@ -257,8 +254,45 @@ std::vector<long long> load_coefs_from_csv(std::string path) {
 	return vec;
 }
 
+long long search_coef(long long a, long long start_t, mpz_t upper_lim) {
+	long long bottom = 0;
+	long long top = start_t;
+
+	mpz_t hold;
+	mpz_init(hold);
+
+	while (true) {
+		pow_coef(hold, a, k_t(top), top);
+		if (0 < mpz_cmp(hold, upper_lim)) {
+			break;
+		}
+		top = top * 2;
+	}
+
+	long long new_hit = 123123;
+	while (1 < top - bottom) {
+		new_hit = (top + bottom) / 2;
+		pow_coef(hold, a, k_t(new_hit), new_hit);
+		int disc = mpz_cmp(hold, upper_lim);
+		if (disc < 0) {
+			bottom = new_hit;
+		}
+		else if (0 < disc) {
+			top = new_hit;
+		}
+		else {
+			return new_hit;
+		}
+	}
+	return bottom;
+	
+
+
+	mpz_clear(hold);
+}
+
 void section1() {
-	std::cout << "Section 1:\n";
+	std::cout << "Section 1: Update on Costello 2002\n";
 	long long c1 = 665829;
 	long long t0 = 81525;
 
@@ -288,7 +322,7 @@ void section1() {
 }
 
 void section2() {
-	std::cout << "Section 2:\n";	
+	std::cout << "Section 2: t0=1105923 Bounding\n";	
 	long long c1 = 665829;
 	long long t0 = 1105923;
 
@@ -318,18 +352,20 @@ void section2() {
 }
 
 void section3() {
-	std::cout << "Section 3:\n";
+	std::cout << "Section 3: t0=1105923 Digit Sum\n";
 
 	long long c1 = 3;
 	long long c2 = 665829;
+	long long t0 = 1105923;
 	std::string path = "./3-665829-1105923.csv";
 
 	bool RECALCULATE = false;
 
 	std::vector<long long> coefs;
+	std::cout << "Let t0 = " << t0 << "\n";
 	std::cout << std::boolalpha << "Recalculating Coefficients? = " << RECALCULATE << "\n";
 	if (RECALCULATE) {
-		coefs = bi_digit_lst_MT(c1, c2, 1105923);
+		coefs = bi_digit_lst_MT(c1, c2, t0);
 		save_coefs_to_csv(coefs, path);
 	}
 	else {
@@ -342,9 +378,71 @@ void section3() {
 		sum += coef;
 	}
 	std::cout << "S(M^{t0}) = " << sum << "\n";
-	std::cout << "Sp(M^{t0}) = " << 4*1105923 << "\n";
-	std::cout << "S(M^{t0}) - Sp(M^{t0}) = " << (sum - 4 * 1105923) % 7 << " mod 7\n";
-	std::cout << "(S(M^{t0}) - Sp(M^{t0}))/7 = " << (sum - 4 * 1105923) / 7 << "\n\n";
+	std::cout << "Sp(M^{t0}) = " << 4* t0 << "\n";
+	std::cout << "S(M^{t0}) - Sp(M^{t0}) = " << (sum - 4 * t0) % 7 << " mod 7\n";
+	std::cout << "(S(M^{t0}) - Sp(M^{t0}))/7 = " << (sum - 4 * t0) / 7 << "\n\n";
+}
+
+void section4() {
+	std::cout << "Section 4: Afterword\n";
+	long long c0 = 665829;
+	long long c1 = c0;
+	long long t0;
+
+	mpz_t op1, op2;
+	mpz_init(op1);
+	mpz_init(op2);
+	
+	mpz_ui_pow_ui(op2, 10, c1);
+	t0 = search_coef(3, 1, op2);
+	std::cout << "Let t0 = " << t0 << "\n";
+	pow_coef(op1, 3, k_t(t0), t0);
+	std::cout << "c_{t0,k(t0)} =\t\t";
+	mpz_print_sci(op1);
+	std::cout << "\n";
+	mpz_ui_pow_ui(op2, 10, c1);
+	std::cout << "10^665829 =\t\t";
+	mpz_print_sci(op2);
+	std::cout << "\n";
+	pow_coef(op1, 3, k_t(t0 + 1), t0 + 1);
+	std::cout << "c_{t0+1,k(t0 + 1)} =\t";
+	mpz_print_sci(op1);
+	std::cout << "\n";
+
+	c1 = 2 * c0;
+	mpz_ui_pow_ui(op2, 10, c1);
+	t0 = search_coef(3, 1, op2);
+	std::cout << "Let t0 = " << t0 << "\n";
+	pow_coef(op1, 3, k_t(t0), t0);
+	std::cout << "c_{t0,k(t0)} =\t\t";
+	mpz_print_sci(op1);
+	std::cout << "\n";
+	std::cout << "10^(2*665829)=\t\t";
+	mpz_print_sci(op2);
+	std::cout << "\n";
+	pow_coef(op1, 3, k_t(t0 + 1), t0 + 1);
+	std::cout << "c_{t0+1,k(t0 + 1)} =\t";
+	mpz_print_sci(op1);
+	std::cout << "\n";
+
+	c1 = 3 * c0;
+	mpz_ui_pow_ui(op2, 10, c1);
+	t0 = search_coef(3, 1, op2);
+	std::cout << "Let t0 = " << t0 << "\n";
+	pow_coef(op1, 3, k_t(t0), t0);
+	std::cout << "c_{t0,k(t0)} =\t\t";
+	mpz_print_sci(op1);
+	std::cout << "\n";
+	std::cout << "10^(3*665829)=\t\t";
+	mpz_print_sci(op2);
+	std::cout << "\n";
+	pow_coef(op1, 3, k_t(t0 + 1), t0 + 1);
+	std::cout << "c_{t0+1,k(t0 + 1)} =\t";
+	mpz_print_sci(op1);
+	std::cout << "\n\n";
+
+	mpz_clear(op1);
+	mpz_clear(op2);
 }
 
 int main() {
@@ -352,36 +450,6 @@ int main() {
 	section1();
 	section2();
 	section3();
+	//section4();
 
-	//long long c_easy = 81519;
-	//long long c_hard = 1105923;
-
-	//std::cout << funcDebugNoOutput(bi_digit_lst_MT, c1, c2, 10000) << "\n";
-	//std::cout << funcDebugNoOutput(bi_digit_lst_MT, c1, c2, 20000) << "\n";
-	//std::cout << funcDebugNoOutput(bi_digit_lst_MT, c1, c2, 40000) << "\n";
-
-	
-	
-	/*
-	c1,c2 = 3,665829
-    c_easy = 81519
-    c_hard = 1105923
-
-    #c2=10000
-    #c_easy=8000
-
-    print('Running benchmarks')
-    #test(     bi_digit_sum,  (3,800,100), 'bi_digit_sum       (Python implementation)')
-    #test(fast_bi_digit_sum,  (3,800,100), 'fast_bi_digit_sum  (CPython C++ extension)')
-    #test(fast_bi_digit_sum2, (3,800,100), 'fast_bi_digit_sum2 (CPython C++ extension)')
-    #test(fast_bi_digit_sum3, (3,800,100), 'fast_bi_digit_sum3 (CPython C++ extension)')
-    test(fast_bi_digit_sum4, (3,800,100), 'fast_bi_digit_sum4 (CPython C++ extension)')
-    test(fast_bi_digit_sum5, (3,800,100), 'fast_bi_digit_sum5 (CPython C++ extension)')
-    test(fast_bi_digit_sum6, (3,800,100), 'fast_bi_digit_sum6 (CPython C++ extension)')    
-
-    test(fast_bi_digit_sum5, (c1,c2,c_easy), 'fast_bi_digit_sum5 (CPython C++ extension) EASY')
-    test(fast_bi_digit_sum6, (c1,c2,c_easy), 'fast_bi_digit_sum6 (CPython C++ extension) EASY')
-
-    test(fast_bi_digit_sum5, (c1,c2,c_hard), 'fast_bi_digit_sum5 (CPython C++ extension) HARD')
-	*/
 }
