@@ -172,7 +172,7 @@
 %%% \title{Text of the title}
 %%% or
 %%% \title[Short form for the running head]{Text of the title}
-\title{Largest Smith Number \\ (PAPER IN PROGRESS)}
+\title{Largest Smith Number}
 
 
 %%% If there are multiple authors, they're described one at a time:
@@ -328,7 +328,7 @@ This Smith number has $\num{1094654215464}$ digits.
 The large-integer calculations throughout the paper were done using the Multiple Precision Integers and Rationals Library (MPIR). The outputs of these calculations can be reproduced using associated code at
  \url{https://github.com/MarlonTri/smith-calc}.
 
-For future work, an even larger $t$ power can be achieved. Section 4 relied on each keeping coefficients small enough that they could be separated in the digit sum. However, it wouldn't be too much more computationally expensive to allow coefficients to get larger than $10^\ME$ and then calculating the digits of coefficients after adding enough adjacent coefficients together. 
+For future work, an even larger $t$ power can be achieved. Section 4 relied on each keeping coefficients small enough that they could be separated in the digit sum. However, it wouldn't be too much more computationally expensive to allow coefficients to get larger than $10^\ME$ and then summing together adjacent coefficients before calculating digit sums. 
 
 
 % \label{sec:intro}
