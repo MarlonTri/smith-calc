@@ -18,7 +18,11 @@ typedef std::chrono::high_resolution_clock::time_point TimeVar;
 
 #define BLOCK_PRINT true
 
-//(a*10**b + 1)**c
+/**
+ * Explicitly calculates (a*10**b + 1)**c and sets variable ret to that value.
+ *
+ * This function is unoptimized for large values.
+ */
 void gen_bi_power(mpz_t ret, long a, long b, long c) {
 	mpz_ui_pow_ui(ret, 10, b);
 	mpz_mul_ui(ret, ret, a);
@@ -26,14 +30,19 @@ void gen_bi_power(mpz_t ret, long a, long b, long c) {
 	mpz_pow_ui(ret, ret, c);
 }
 
-//Calculates R_n = 11...11 (n digits)
+/**
+ * Explicitly calculates the repunit R_n = 11...11 (n digits) and sets variable ret to that value.
+ */
 void gen_repunit(mpz_t ret, long n) {
 	mpz_ui_pow_ui(ret, 10, n);
 	mpz_sub_ui(ret, ret, 1);
 	mpz_divexact_ui(ret, ret, 9);
 }
 
-//Calculates c^t_k = (c  k) a^k
+/**
+ * Explicitly calculates the coefficient c_{t,k} = binom(c  k) a^k and sets variable ret to that value.
+ * c_{t,k} is the k^th coefficient of the power expansion (a*10**b + 1)**t.
+ */
 void pow_coef(mpz_t ret, long long a, long long k, long long c) {
 	mpz_t hold;
 	mpz_init(hold);
@@ -45,6 +54,14 @@ void pow_coef(mpz_t ret, long long a, long long k, long long c) {
 	mpz_clear(hold);
 }
 
+/**
+ * Sum digits of an integer.
+ *
+ * Example: S(1232) = 1 + 2 + 3 + 2 = 8
+ *
+ * @param num number to be digit summed.
+ * @return sum of digits
+ */
 long long digit_sum(mpz_t num) {
 	long long sum = 0;
 	char* num_str = mpz_get_str(NULL, 10, num);
@@ -55,13 +72,22 @@ long long digit_sum(mpz_t num) {
 	return sum;
 }
 
+/**
+ * Calculates k(t) = ceil( (3*t-1)/4 )
+ * 
+ * For a=3, k_t(t) will be largest coefficient of all c_{t,k} coefficients of (a*10**b + 1)**t expansion.
+ */
 long k_t(long t) {
-	//ceil(x/y) = (x + y - 1) / y
-	
-	//ceil( (3*t-1)/4 )
+	//Identity: ceil(x/y) = (x + y - 1) / y
+	//Therefor, below is ceil( (3*t-1)/4 )
 	return (3 * t + 2) / 4;
 }
 
+/**
+ * Calculates digit sum of (a*10**b + 1)**c explicitly (GROUND TRUTH)
+ *
+ * This function is slowest and most memory intensive, but is a ground truth to compare other faster digit sum functions.
+ */
 long long bi_digit_sum_GT(long a, long b, long c) {
 	mpz_t ret;
 	mpz_init(ret);
@@ -71,6 +97,11 @@ long long bi_digit_sum_GT(long a, long b, long c) {
 	return out;
 }
 
+/**
+ * Calculates digit sum of (a*10**b + 1)**c by summing coefficient c_{t,k} digit sums.
+ *
+ * This function is fast and memory-efficient but requires each coefficient to be smaller than 10**b for accuracy.
+ */
 long long bi_digit_sum_COEF(long a, long b, long c) {
 	long long sum = 0;
 
@@ -87,6 +118,11 @@ long long bi_digit_sum_COEF(long a, long b, long c) {
 	return sum;
 }
 
+/**
+ * Calculates digit sum of (a*10**b + 1)**c by summing coefficient c_{t,k} digit sums (MULTI THREADED).
+ *
+ * This function is fastest, as it is a multi-threaded implementation of bi_digit_sum_COEF.
+ */
 long long bi_digit_sum_COEF_MT(long a, long b, long c) {
 	BS::thread_pool pool;
 	long long PARALLEL_SIZE = 10000;
@@ -121,6 +157,11 @@ long long bi_digit_sum_COEF_MT(long a, long b, long c) {
 	return sum;
 }
 
+/**
+ * Calculates digit sums of each coefficient of (a*10**b + 1)**c. 
+ *
+ * This function is internally identical to bi_digit_sum_COEF but returns the coefficient digit sums as a vector.
+ */
 std::vector<long long> bi_digit_lst(long a, long b, long c) {
 	long long sum = 0;
 
@@ -139,6 +180,11 @@ std::vector<long long> bi_digit_lst(long a, long b, long c) {
 	return ret;
 }
 
+/**
+ * Calculates digit sums of each coefficient of (a*10**b + 1)**c (MULTI THREADED).
+ *
+ * This function is internally identical to bi_digit_sum_COEF_MT but returns the coefficient digit sums as a vector.
+ */
 std::vector<long long> bi_digit_lst_MT(long a, long b, long c) {
 	BS::thread_pool pool;
 	long long PARALLEL_SIZE = 10000;
@@ -170,6 +216,11 @@ std::vector<long long> bi_digit_lst_MT(long a, long b, long c) {
 	return ret;
 }
 
+/**
+ * Times a function call with given arguments
+ * 
+ * @return Duration in seconds
+ */
 template<typename F, typename... Args>
 double funcTime(F func, Args&&... args) {
 	TimeVar t1 = timeNow();
@@ -177,6 +228,7 @@ double funcTime(F func, Args&&... args) {
 	return duration(timeNow() - t1);
 }
 
+//funcDebug helper function.
 template<typename T, typename... Args>
 std::string sjoin(T arg) {
 	std::string ret = "";
@@ -184,6 +236,7 @@ std::string sjoin(T arg) {
 	return ret;
 }
 
+//funcDebug helper function.
 template<typename T, typename... Args>
 std::string sjoin(T arg, Args&&... args) {
 	std::string ret = "";
@@ -191,6 +244,11 @@ std::string sjoin(T arg, Args&&... args) {
 	return ret;
 }
 
+/**
+ * Prints debug and performance info about a function call with given arguments.
+ *
+ * @return Debug information as string
+ */
 template<typename F, typename... Args>
 std::string funcDebug(F func, Args&&... args) {
 	std::string ret = "\tInputs:";
@@ -219,6 +277,9 @@ std::string funcDebugNoOutput(F func, Args&&... args) {
 	return ret;
 }
 
+/**
+ * Prints mpz_t integer in scientific notation with truncation and 6 sig-figs.
+ */
 void mpz_print_sci(mpz_t integer) {
 	/* Print integer's value in scientific notation without rounding */
 	char* buff = mpz_get_str(NULL, 10, integer);
@@ -228,6 +289,9 @@ void mpz_print_sci(mpz_t integer) {
 	std::cout << "...*10^" << strlen(buff)-1;
 }
 
+/**
+ * Saves a vector of coefficients to a .csv file.
+ */
 template<typename T>
 void save_coefs_to_csv(std::vector<T> vec, std::string path) {
 	std::ofstream output_file(path);
@@ -239,6 +303,9 @@ void save_coefs_to_csv(std::vector<T> vec, std::string path) {
 	}
 }
 
+/**
+ * Loads a vector of coefficients from a .csv file.
+ */
 std::vector<long long> load_coefs_from_csv(std::string path) {
 	std::vector<long long> vec;
 	std::ifstream file(path);
@@ -254,6 +321,10 @@ std::vector<long long> load_coefs_from_csv(std::string path) {
 	return vec;
 }
 
+/**
+ * Binary search to find a value t so that 
+ * c_{t,k(t)} <= upper_lim <= c_{t+1,k(t+1)}
+ */
 long long search_coef(long long a, long long start_t, mpz_t upper_lim) {
 	long long bottom = 0;
 	long long top = start_t;
