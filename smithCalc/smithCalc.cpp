@@ -1,5 +1,3 @@
-// smithHelper2.cpp : This file contains the 'main' function. Program execution begins and ends there.
-//
 #include <Windows.h>
 #include <cmath>
 #include <mpir.h>
@@ -64,8 +62,8 @@ void pow_coef(mpz_t ret, long long a, long long k, long long c) {
  */
 long long digit_sum(mpz_t num) {
 	long long sum = 0;
-	char* num_str = mpz_get_str(NULL, 10, num);
-	for (char* t = num_str; *t != '\0'; t++) {
+	char *num_str = mpz_get_str(NULL, 10, num);
+	for (char *t = num_str; *t != '\0'; t++) {
 		sum += *t - '0';
 	}
 	free(num_str);
@@ -74,12 +72,12 @@ long long digit_sum(mpz_t num) {
 
 /**
  * Calculates k(t) = ceil( (3*t-1)/4 )
- * 
+ *
  * For a=3, k_t(t) will be largest coefficient of all c_{t,k} coefficients of (a*10**b + 1)**t expansion.
  */
 long k_t(long t) {
-	//Identity: ceil(x/y) = (x + y - 1) / y
-	//Therefor, below is ceil( (3*t-1)/4 )
+	// Identity: ceil(x/y) = (x + y - 1) / y
+	// Therefor, below is ceil( (3*t-1)/4 )
 	return (3 * t + 2) / 4;
 }
 
@@ -108,7 +106,7 @@ long long bi_digit_sum_COEF(long a, long b, long c) {
 	mpz_t hold;
 	mpz_init(hold);
 
-	for (int k = 0; k <= c;k++) {
+	for (int k = 0; k <= c; k++) {
 		pow_coef(hold, a, k, c);
 		sum += digit_sum(hold);
 	}
@@ -158,7 +156,7 @@ long long bi_digit_sum_COEF_MT(long a, long b, long c) {
 }
 
 /**
- * Calculates digit sums of each coefficient of (a*10**b + 1)**c. 
+ * Calculates digit sums of each coefficient of (a*10**b + 1)**c.
  *
  * This function is internally identical to bi_digit_sum_COEF but returns the coefficient digit sums as a vector.
  */
@@ -170,9 +168,9 @@ std::vector<long long> bi_digit_lst(long a, long b, long c) {
 	mpz_t hold;
 	mpz_init(hold);
 
-	for (int k = 0; k <= c;k++) {
+	for (int k = 0; k <= c; k++) {
 		pow_coef(hold, a, k, c);
-		ret.at(k) =  digit_sum(hold);
+		ret.at(k) = digit_sum(hold);
 	}
 
 	mpz_clear(hold);
@@ -208,7 +206,7 @@ std::vector<long long> bi_digit_lst_MT(long a, long b, long c) {
 
 				mpz_clear(hold);
 
-				return (long long) 1;
+				return (long long)1;
 			});
 		mf.get();
 	}
@@ -218,27 +216,27 @@ std::vector<long long> bi_digit_lst_MT(long a, long b, long c) {
 
 /**
  * Times a function call with given arguments
- * 
+ *
  * @return Duration in seconds
  */
-template<typename F, typename... Args>
-double funcTime(F func, Args&&... args) {
+template <typename F, typename... Args>
+double funcTime(F func, Args &&...args) {
 	TimeVar t1 = timeNow();
 	func(std::forward<Args>(args)...);
 	return duration(timeNow() - t1);
 }
 
-//funcDebug helper function.
-template<typename T, typename... Args>
+// funcDebug helper function.
+template <typename T, typename... Args>
 std::string sjoin(T arg) {
 	std::string ret = "";
 	ret += std::to_string(arg);
 	return ret;
 }
 
-//funcDebug helper function.
-template<typename T, typename... Args>
-std::string sjoin(T arg, Args&&... args) {
+// funcDebug helper function.
+template <typename T, typename... Args>
+std::string sjoin(T arg, Args &&...args) {
 	std::string ret = "";
 	ret = std::to_string(arg) + "," + sjoin(args...);
 	return ret;
@@ -249,8 +247,8 @@ std::string sjoin(T arg, Args&&... args) {
  *
  * @return Debug information as string
  */
-template<typename F, typename... Args>
-std::string funcDebug(F func, Args&&... args) {
+template <typename F, typename... Args>
+std::string funcDebug(F func, Args &&...args) {
 	std::string ret = "\tInputs:";
 	ret += sjoin(args...);
 	ret = ret + "\tOutput:";
@@ -263,8 +261,8 @@ std::string funcDebug(F func, Args&&... args) {
 	return ret;
 }
 
-template<typename F, typename... Args>
-std::string funcDebugNoOutput(F func, Args&&... args) {
+template <typename F, typename... Args>
+std::string funcDebugNoOutput(F func, Args &&...args) {
 	std::string ret = "\tInputs:";
 	ret += sjoin(args...);
 	ret = ret + "\t";
@@ -282,23 +280,23 @@ std::string funcDebugNoOutput(F func, Args&&... args) {
  */
 void mpz_print_sci(mpz_t integer) {
 	/* Print integer's value in scientific notation without rounding */
-	char* buff = mpz_get_str(NULL, 10, integer);
+	char *buff = mpz_get_str(NULL, 10, integer);
 	printf("%.*s", 1, buff);
 	std::cout << ".";
 	printf("%.*s", 6, buff + 1);
-	std::cout << "...*10^" << strlen(buff)-1;
+	std::cout << "...*10^" << strlen(buff) - 1;
 }
 
 /**
  * Saves a vector of coefficients to a .csv file.
  */
-template<typename T>
+template <typename T>
 void save_coefs_to_csv(std::vector<T> vec, std::string path) {
 	std::ofstream output_file(path);
 	for (long i = 0; i < vec.size(); i++) {
 		output_file << i << "," << vec.at(i);
-		if (i != vec.size() - 1) { 
-			output_file << "\n"; 
+		if (i != vec.size() - 1) {
+			output_file << "\n";
 		}
 	}
 }
@@ -322,7 +320,7 @@ std::vector<long long> load_coefs_from_csv(std::string path) {
 }
 
 /**
- * Binary search to find a value t so that 
+ * Binary search to find a value t so that
  * c_{t,k(t)} <= upper_lim <= c_{t+1,k(t+1)}
  */
 long long search_coef(long long a, long long start_t, mpz_t upper_lim) {
@@ -356,8 +354,6 @@ long long search_coef(long long a, long long start_t, mpz_t upper_lim) {
 		}
 	}
 	return bottom;
-	
-
 
 	mpz_clear(hold);
 }
@@ -370,7 +366,6 @@ void section1() {
 	mpz_t op1, op2;
 	mpz_init(op1);
 	mpz_init(op2);
-
 
 	pow_coef(op1, 3, k_t(t0), t0);
 	std::cout << "c_{81525,k(81525)} =\t";
@@ -393,7 +388,7 @@ void section1() {
 }
 
 void section2() {
-	std::cout << "Section 2: t0=1105923 Bounding\n";	
+	std::cout << "Section 2: t0=1105923 Bounding\n";
 	long long c1 = 665829;
 	long long t0 = 1105923;
 
@@ -449,7 +444,7 @@ void section3() {
 		sum += coef;
 	}
 	std::cout << "S(M^{t0}) = " << sum << "\n";
-	std::cout << "Sp(M^{t0}) = " << 4* t0 << "\n";
+	std::cout << "Sp(M^{t0}) = " << 4 * t0 << "\n";
 	std::cout << "S(M^{t0}) - Sp(M^{t0}) = " << (sum - 4 * t0) % 7 << " mod 7\n";
 	std::cout << "(S(M^{t0}) - Sp(M^{t0}))/7 = " << (sum - 4 * t0) / 7 << "\n\n";
 }
@@ -463,7 +458,7 @@ void section4() {
 	mpz_t op1, op2;
 	mpz_init(op1);
 	mpz_init(op2);
-	
+
 	mpz_ui_pow_ui(op2, 10, c1);
 	t0 = search_coef(3, 1, op2);
 	std::cout << "Let t0 = " << t0 << "\n";
@@ -521,6 +516,5 @@ int main() {
 	section1();
 	section2();
 	section3();
-	//section4();
-
+	// section4();
 }
